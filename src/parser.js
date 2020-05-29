@@ -9,6 +9,14 @@ const types = [
     name: '%',
     regexp: new RegExp(`^${floatRegexp}%$`)
   },
+  {
+    name: 'vw',
+    regexp: new RegExp(`^${floatRegexp}vw$`)
+  },
+  {
+    name: 'vh',
+    regexp: new RegExp(`^${floatRegexp}vh$`)
+  },
   /**
    * Fallback option
    * If no suffix specified, assigning "px"
@@ -56,7 +64,7 @@ export const parseNumber = value => {
 export const validateNumber = value => {
   if (typeof value === 'string') {
     let _value = parseNumber(value)
-    return (_value.type === '%' || _value.type === 'px') && _value.value > 0
+    return (_value.type === '%' || _value.type === 'px' || _value.type === 'vw' || _value.type === 'vh') && _value.value > 0
   }
 
   return value >= 0
